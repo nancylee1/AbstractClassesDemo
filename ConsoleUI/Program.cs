@@ -33,18 +33,79 @@ namespace ConsoleUI
 
             // Create a list of Vehicle called vehicles
 
+            var vehicles = new List<Vehicle>();
+            //List<Vehicle> vehicles = new ();      *Another way of writing the list
+
             /*
              * Create 4 instances: 1 Car, 1 Motorcycle, and then 2 instances of type Vehicle (use explicit typing) but use constuctors from derived classes
              * - new it up as one of each derived class
              * Set the properties with object initializer syntax
              */
 
+            var car1 = new Car()
+            {
+                Year = "2022",
+                Make = "Hyundai",
+                Model = "Genesis",
+                HasTrunk = true,
+                HasDualExhaust = true
+            };
+
+            var motorcycle1 = new Motorcycle()
+            {
+                Year = "2022",
+                Make = "Yamaha",
+                Model = "Tenere 700",
+                HasSideCart = false,
+                IsHarleyDavidson = false
+            };
+
+            Vehicle vehicle1 = new Car()  // 2 instances of type Vehicle (use explicit typing) but use constuctors from derived classes - new it up as one of each derived class
+            {
+                Year = "2023",
+                Make = "Lotus",
+                Model = "Evija",
+                HasTrunk = true,
+                HasDualExhaust = true
+            };
+
+            Vehicle vehicle2 = new Motorcycle()  // 2 instances of type Vehicle (use explicit typing) but use constuctors from derived classes - new it up as one of each derived class
+            {
+                Year = "2023",
+                Make = "Kawasaki",
+                Model = "Ninja",
+                HasSideCart = false,
+                IsHarleyDavidson = false
+            };
+
+
             /*
-             * Add the 4 vehicles to the list
-             * Using a foreach loop iterate over each of the properties
-             */
+             * Add the 4 vehicles to the list /* In order of highest price first */
+            //*/
+
+            vehicles.Add(vehicle1);
+            vehicles.Add(vehicle2);
+            vehicles.Add(car1);
+            vehicles.Add(motorcycle1);
+
+            // *Using a foreach loop iterate over each of the properties
+            foreach (var vehicle in vehicles)
+            {
+                //Console.WriteLine(vehicle.Year);
+                //Console.WriteLine(vehicle.Make);
+                //Console.WriteLine(vehicle.Model);
+
+                //Console.WriteLine($"Year: {vehicle.Year} | Make: {vehicle.Make} | Model: {vehicle.Model}");
+                vehicle.PrintInfo();   // To also print the 2 distinct properties we created (ie: HasSideCart, HasTrunk, etc...)
+                vehicle.DriveAbstract();
+                Console.WriteLine("----------------------------------\n");
+            }
+
 
             // Call each of the drive methods for one car and one motorcycle
+
+            car1.DriveAbstract();
+            motorcycle1.DriveVirtual(); 
 
             #endregion            
             Console.ReadLine();
